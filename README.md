@@ -15,13 +15,13 @@
 
 #### Para Instalar
 
-###### Tendo o Postgres, Node e npm configurado e instalado na máquina, basta rodar os comandos
+###### Tendo o SQlite, Node e npm configurado e instalado na máquina, basta rodar os comandos
 
 `$ npm install -g sequelize-cli`
 
 `$ npm install`
 
-`$ sequelize db:migrate`
+`$ npx sequelize-cli db:migrate`
 
 #### Para Executar
 `$ npm start`

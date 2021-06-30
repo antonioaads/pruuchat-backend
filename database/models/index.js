@@ -18,7 +18,7 @@ let sequelize;
 
 sequelize = new Sequelize({
   dialect: 'sqlite',
-  storage: 'database.db'
+  storage: './database/database.sqlite'
 });
 
 fs
