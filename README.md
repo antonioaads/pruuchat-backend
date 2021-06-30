@@ -15,7 +15,7 @@
 
 #### Para Instalar
 
-###### Tendo o SQlite, Node e npm configurado e instalado na máquina, basta rodar os comandos
+###### Tendo o Sqlite, Node e npm configurado e instalado na máquina, basta rodar os comandos
 
 `$ npm install -g sequelize-cli`
 
