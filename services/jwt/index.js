@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 import Promise from 'bluebird'
-
+const jwtSecret = "mysuperdupersecret";
 
 const jwtSign = Promise.promisify(jwt.sign)
 const jwtVerify = Promise.promisify(jwt.verify)

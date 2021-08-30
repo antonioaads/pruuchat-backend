@@ -19,7 +19,7 @@ module.exports.listen = () => {
     });
 
     app.get('/users', UserController.index);
-    app.post('/users', UserController.upsert);
+    app.post('/users', UserController.create);
     app.put('/users/:id', UserController.upsert);
     app.get('/users/:id', UserController.indexOne);
     app.post('/auth', UserController.auth);
