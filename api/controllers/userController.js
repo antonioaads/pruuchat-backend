@@ -86,7 +86,7 @@ export class UserController {
           database.Users.create(body)
             .then((created) => {
               sign(created.dataValues.id).then((token) => {
-                successAsync(res, 201, token);
+                successAsync(res, 201, { ...created.dataValues, token });
               });
             })
             .catch((err) => {
