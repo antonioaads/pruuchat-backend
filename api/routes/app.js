@@ -11,6 +11,7 @@ var cors = require('cors')
 app.use(cors()) // Use this after the variable declaration
 
 import UserController from '../controllers/userController';
+import {authorizate as auth} from '../../services/jwt/index';
 
 module.exports.listen = () => {
 
@@ -18,10 +19,11 @@ module.exports.listen = () => {
         console.log('Backend listen at port 4018!');
     });
 
-    app.get('/users', UserController.index);
-    app.post('/users', UserController.upsert);
-    app.put('/users/:id', UserController.upsert);
-    app.get('/users/:id', UserController.indexOne);
+    app.get('/users', auth, UserController.index);
+    app.post('/users', auth, UserController.create);
+    app.put('/users/', auth, UserController.upsert);
+    app.get('/users/:id', auth, UserController.indexOne);
+
     app.post('/auth', UserController.auth);
 
 
