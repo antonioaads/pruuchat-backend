@@ -29,18 +29,21 @@ export class UserController {
       .catch(next);
   }
 
-  upsert({ body }, res, next) {
-    database.Users.upsert(body).then(() => successAsync(res, 200));
+  upsert({ body, userId }, res, next) {
+    body.id = userId
+    database.Users.upsert(body).then(() => successAsync(res, 200)).catch(err => successAsync(res, 500, err));
   }
 
   async auth({ body }, res, next) {
     console.log(body);
 
     if (!body.password) {
-      res.json({ message: "Missing password", status: 400 });
+      res.status(400);
+      res.json({ message: "Missing password" });
     }
     if (!body.email) {
-      res.json({ message: "Missing email", status: 400 });
+      res.status(400);
+      res.json({ message: "Missing email" });
     }
     const user = await database.Users.findOne({
       where: { email: body.email, password: body.password },
@@ -54,6 +57,7 @@ export class UserController {
         successAsync(res, 200, { token, ...user.dataValues });
       });
     } else {
+      res.status(401);
       res.json({ message: "Wrong login", status: 401 });
     }
   }
