@@ -54,7 +54,11 @@ export class UserController {
 
     if (user) {
       sign(user.id).then((token) => {
-        successAsync(res, 200, { token, ...user.dataValues });
+        const filteredUser = {}
+        Object.keys(user.dataValues)
+              .filter(k => k !== 'password')
+              .forEach(k => { filteredUser[k] = user.dataValues[k] });
+        successAsync(res, 200, { token, ...filteredUser });
       });
     } else {
       res.status(401);
