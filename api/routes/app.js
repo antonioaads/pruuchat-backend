@@ -14,6 +14,7 @@ app.use(cors()) // Use this after the variable declaration
 
 import UserController from '../controllers/userController';
 import {authorizate as auth} from '../../services/jwt/index';
+import FriendController from '../controllers/friendController';
 
 module.exports.listen = () => {
     
@@ -28,6 +29,7 @@ module.exports.listen = () => {
     
     app.post('/auth', UserController.auth);
     
+    app.get('/friends', auth, FriendController.index);
     
     //socket
     const io = socket(server, {

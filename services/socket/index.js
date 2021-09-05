@@ -1,14 +1,26 @@
 export const initializingSocket = (io) => {
     //initializing the socket io connection 
     io.on("connection", (socket) => {
-      //register online userName
-      socket.join(socket.handshake.query.username);
+      console.log(socket.handshake.query.id);
+      //register online userId
+      socket.join(socket.handshake.query.id);
     
       //user sending message
-      socket.on("chat", ({originUsername, destinationUsername, text}) => {
-        io.to(destinationUsername).emit("message", {
-            originUsername,
+      socket.on("chat", ({originId, destinationId, text}) => {
+        originId = String(originId)
+        destinationId = String(destinationId)
+        const timestamp = Date.now()
+
+        io.to(String(destinationId)).emit("message", {
+            originId,
             text,
+            timestamp
+        });
+        socket.emit("message", {
+          originId,
+          destinationId,
+          text,
+          timestamp
         });
       });
     });
