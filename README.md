@@ -26,4 +26,14 @@
 #### Para Executar
 `$ npm start`
 
+## Itens extras (front-end)
+
+- [x]  **(4%) Agendamento de funções do *back-end* para executar de tempos em tempos (eg, processar o ataque do reino de um jogador a outro)**
+- [x]  **(6%) Propagação de atualização do *back-end* para o *front-end* (eg, usando Web Sockets diretamente ou alguns bancos NoSQL reativos)**
+- [x]  **(3%) Camada de dados RESTful**
+- [x]  **(5%) *Upload* de arquivos**
+
+## Itens extras (gestão de usuário)
+- [x]  **(3-7%) Possibilidade de alterar dados do perfil**
+
 ##### Autor: Uriel B.Braga
