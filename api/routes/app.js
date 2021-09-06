@@ -23,7 +23,7 @@ module.exports.listen = () => {
     });
     
     app.get('/users', auth, UserController.index);
-    app.post('/users', auth, UserController.create);
+    app.post('/users', UserController.create);
     app.put('/users/', auth, UserController.upsert);
     app.get('/users/:id', auth, UserController.indexOne);
     

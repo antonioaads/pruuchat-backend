@@ -1,7 +1,6 @@
 export const initializingSocket = (io) => {
     //initializing the socket io connection 
     io.on("connection", (socket) => {
-      console.log(socket.handshake.query.id);
       //register online userId
       socket.join(socket.handshake.query.id);
     
